@@ -3,9 +3,10 @@ import {useUserStore} from "~/stores/user";
 
 const userStore = useUserStore();
 const isAccountMenu = ref(false);
-const isSearching = ref(true);
+const isSearching = ref(false);
 const searchItem = ref('');
 const isCartHover = ref(false);
+let items = ref(null)
 </script>
 
 <template>
@@ -106,7 +107,7 @@ const isCartHover = ref(false);
               </button>
             </div>
             <div class="absolute bg-white max-w-[700px] h-auto w-full">
-              <div class="p-1" v-if="userStore.isMenuOverlay">
+              <div class="p-1" v-if="items">
                 <NuxtLink
                     to="/item/1"
                     class="flex items-center justify-between w-full cursor-pointer hover:bg-gray-100"
