@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {useUserStore} from "~/stores/user";
+const userStore = useUserStore();
 const isAccountMenu = ref(false);
 const isSearching = ref(true);
 const searchItem = ref('');
@@ -160,10 +162,10 @@ const isCartHover = ref(false);
         </button>
       </div>
     </div>
-    <!--    <Loading v-if="userStore.isLoading"/>-->
+        <Loading v-if="userStore.isLoading"/>
     <div class="lg:pt-[150px] md:pt-[130px] pt-[80px]">
       <slot></slot>
     </div>
-    <Footer/>
+    <Footer v-if="!userStore.isLoading"/>
   </div>
 </template>
