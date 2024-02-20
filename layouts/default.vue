@@ -2,6 +2,7 @@
 const isAccountMenu = ref(false);
 const isSearching = ref(true);
 const searchItem = ref('');
+const isCartHover = ref(false);
 </script>
 
 <template>
@@ -101,8 +102,56 @@ const searchItem = ref('');
                 <Icon name="ph:magnifying-glass" size="20" class="text-[#FFFFFF]"/>
               </button>
             </div>
+            <div class="absolute bg-white max-w-[700px] h-auto w-full">
+              <div class="p-1" v-if="false">
+                <NuxtLink
+                    to="/item/1"
+                    class="flex items-center justify-between w-full cursor-pointer hover:bg-gray-100"
+                >
+                  <div class="flex items-center">
+                    <img src="https://picsum.photos/id/82/300/300" alt="" class="rounded-md" width="40">
+                    <div class="truncate ml-2">Testing</div>
+                  </div>
+                  <div class="truncate">$ 98.99</div>
+                </NuxtLink>
+              </div>
+            </div>
           </div>
         </div>
+        <NuxtLink
+            to="/cart"
+            class="flex items-center"
+        >
+          <div
+              class="relative hidden md:block cursor-pointer"
+              @mouseenter="isCartHover = true"
+              @mouseleave="isCartHover = false"
+          >
+            <span
+                class="
+                absolute
+                flex
+                items-center
+                justify-center
+                -right-[3px]
+                top-0
+                bg-[#FF4646]
+                h-[17px]
+                min-w-[17px]
+                text-xs
+                text-white
+                px-0.5
+                rounded-full
+                "
+            >
+              0
+            </span>
+            <div class="min-w-[40px]">
+              <Icon name="ph:shopping-cart-simple-light" size="33" :color="isCartHover ? '#FF4646': ''"/>
+            </div>
+          </div>
+
+        </NuxtLink>
       </div>
     </div>
     <slot></slot>
