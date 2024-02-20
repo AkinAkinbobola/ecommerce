@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const isAccountMenu = ref(false);
+const isSearching = ref(true);
+const searchItem = ref('');
 </script>
 
 <template>
@@ -79,6 +81,28 @@ const isAccountMenu = ref(false);
         <NuxtLink to="/" class="min-w-[170px]">
           <img src="/aliexpress-logo.png" width="170" alt="AliExpress Logo">
         </NuxtLink>
+        <div class="max-w-[700px] w-full md:block hidden">
+          <div class="relative">
+            <div class="flex items-center border-2 border-[#FF4646] rounded-md w-full">
+              <input
+                  type="text"
+                  class="
+                    w-full
+                    placeholder-gray-400
+                    text-sm
+                    pl-3
+                    focus:outline-none
+                  "
+                  placeholder="Kitchen accessories"
+                  v-model="searchItem"
+              >
+              <Icon v-if="isSearching" name="eos-icons:loading" size="25" class="mr-2"/>
+              <button class="flex items-center h-full p-1.5 px-2 bg-[#FF4646]">
+                <Icon name="ph:magnifying-glass" size="20" class="text-[#FFFFFF]"/>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <slot></slot>
