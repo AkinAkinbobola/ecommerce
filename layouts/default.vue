@@ -150,10 +150,20 @@ const isCartHover = ref(false);
               <Icon name="ph:shopping-cart-simple-light" size="33" :color="isCartHover ? '#FF4646': ''"/>
             </div>
           </div>
-
         </NuxtLink>
+
+        <button
+            @click="userStore.isMenuOverlay = true"
+            class="block md:hidden rounded-full p-1.5 -mt-[4px] hover:bg-gray-200"
+        >
+          <Icon name="radix-icons:hamburger-menu" size="33"></Icon>
+        </button>
       </div>
     </div>
-    <slot></slot>
+    <!--    <Loading v-if="userStore.isLoading"/>-->
+    <div class="lg:pt-[150px] md:pt-[130px] pt-[80px]">
+      <slot></slot>
+    </div>
+    <Footer/>
   </div>
 </template>
