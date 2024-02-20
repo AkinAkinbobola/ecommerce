@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {useUserStore} from "~/stores/user";
+
 const userStore = useUserStore();
 const isAccountMenu = ref(false);
 const isSearching = ref(true);
@@ -8,7 +9,7 @@ const isCartHover = ref(false);
 </script>
 
 <template>
-  <div id="MainLayout" class="w-full fixed z-50">
+  <div id="MainLayout" class="w-full z-50">
     <div id="TopMenu" class="w-full bg-[#FAFAFA] border-b hidden md:block">
       <ul class="flex items-center justify-end text-xs text-[#333333] font-light px-2 h-10 bg-[#FAFAFA] max-w-[1200px]">
         <li class="border-r border-r-gray-400 px-3 hover:text-[#FF4646] cursor-pointer">
@@ -105,7 +106,7 @@ const isCartHover = ref(false);
               </button>
             </div>
             <div class="absolute bg-white max-w-[700px] h-auto w-full">
-              <div class="p-1" v-if="false">
+              <div class="p-1" v-if="userStore.isMenuOverlay">
                 <NuxtLink
                     to="/item/1"
                     class="flex items-center justify-between w-full cursor-pointer hover:bg-gray-100"
@@ -162,8 +163,8 @@ const isCartHover = ref(false);
         </button>
       </div>
     </div>
-        <Loading v-if="userStore.isLoading"/>
-    <div class="lg:pt-[150px] md:pt-[130px] pt-[80px]">
+    <Loading v-if="userStore.isLoading"/>
+    <div>
       <slot></slot>
     </div>
     <Footer v-if="!userStore.isLoading"/>
