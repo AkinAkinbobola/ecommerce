@@ -2,8 +2,16 @@
 export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: [
-        '@nuxtjs/color-mode'
+        '@nuxtjs/color-mode',
+        'nuxt-icon',
+        'nuxt-lodash',
+        '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt'
+        // '@nuxtjs/supabase'
     ],
+    build: {
+        transpile: ['pinia-plugin-persistedstate'],
+    },
     colorMode: {
         classSuffix: ''
     },
@@ -14,4 +22,19 @@ export default defineNuxtConfig({
             autoprefixer: {},
         },
     },
+    runtimeConfig: {
+        public: {
+            stripeKey: process.env.STRIPE_PK_KEY,
+        }
+    },
+    app: {
+        head: {
+            script: [
+                {
+                    src: 'https://js.stripe.com/v3',
+                    defer: true
+                }
+            ]
+        }
+    }
 })
