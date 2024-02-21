@@ -165,7 +165,7 @@ let items = ref(null)
       </div>
     </div>
     <Loading v-if="userStore.isLoading"/>
-    <div>
+    <div class="px-10">
       <slot></slot>
     </div>
     <Footer v-if="!userStore.isLoading"/>
