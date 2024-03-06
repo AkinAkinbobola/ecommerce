@@ -3,5 +3,7 @@
 </script>
 
 <template>
-
+  <div>
+    cart
+  </div>
 </template>
