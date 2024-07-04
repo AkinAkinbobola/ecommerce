@@ -18,12 +18,12 @@ export class AuthService {
 
     if (emailInUse) throw new BadRequestException('User already exists');
 
-    const { password: rawPassword, ...otherdata } = data;
+    const { password: rawPassword, ...otherData } = data;
     const password = await bcrypt.hash(rawPassword, SALT);
 
     return this.prismaService.user.create({
       data: {
-        ...otherdata,
+        ...otherData,
         password,
       },
     });
